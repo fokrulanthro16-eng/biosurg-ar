@@ -5,9 +5,18 @@
 ---
 
 [![LEAF 14/14 Compliance](https://img.shields.io/badge/LEAF_Compliance-14%2F14_PASS_(100%25)-00ffcc?style=for-the-badge&logo=checkmarx)](devpost/leaf-test-plan.md)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel_Live-biosurg--ar.vercel.app-black?style=for-the-badge&logo=vercel)](https://biosurg-ar.vercel.app)
 [![Snap SPECS](https://img.shields.io/badge/Snap_SPECS-Optical_Waveguide_V3-fffc00?style=for-the-badge&logo=snapchat)](https://specs.snap.com)
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL2_GLSL-black?style=for-the-badge&logo=three.js)](https://threejs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+
+---
+
+## 🌐 Live Production Deployments
+- **Official Production Vercel URL:** [https://biosurg-ar.vercel.app](https://biosurg-ar.vercel.app)
+- **Deployment Inspect URL:** [https://vercel.com/fokruls-projects/biosurg-ar](https://vercel.com/fokruls-projects/biosurg-ar)
+- **GitHub Pages Mirror:** [https://fokrulanthro16-eng.github.io/biosurg-ar/](https://fokrulanthro16-eng.github.io/biosurg-ar/)
+- **Public GitHub Repository:** [https://github.com/fokrulanthro16-eng/biosurg-ar](https://github.com/fokrulanthro16-eng/biosurg-ar)
 
 ---
 
