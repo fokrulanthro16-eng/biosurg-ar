@@ -1,22 +1,27 @@
-# BioSurg AR v3.0 🔬🩺
-### Quantum Autonomous Neural Trauma & Sub-Dermal Microsurgical AR Suite for Snap SPECS
-**Engineered to unconditionally dominate 1st Place in the "Learn AR with SPECS" Hackathon**
+# BioSurg AR v3.0
+
+> **Zero-Touch Spatial Ultrasound, Sub-Dermal Vein Projection & Doppler Acoustic Guidance for Sterile Emergency Trauma on Snap SPECS.**
 
 ---
 
 [![LEAF 14/14 Compliance](https://img.shields.io/badge/LEAF_Compliance-14%2F14_PASS_(100%25)-00ffcc?style=for-the-badge&logo=checkmarx)](devpost/leaf-test-plan.md)
 [![Vercel Deployment](https://img.shields.io/badge/Vercel_Live-biosurg--ar.vercel.app-black?style=for-the-badge&logo=vercel)](https://biosurg-ar.vercel.app)
+[![YouTube Demo](https://img.shields.io/badge/YouTube_Demo-Watch_Video-red?style=for-the-badge&logo=youtube)](https://youtu.be/zc10LdPOyUo)
 [![Snap SPECS](https://img.shields.io/badge/Snap_SPECS-Optical_Waveguide_V3-fffc00?style=for-the-badge&logo=snapchat)](https://specs.snap.com)
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL2_GLSL-black?style=for-the-badge&logo=three.js)](https://threejs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 ---
 
-## 🌐 Live Production Deployments
-- **Official Production Vercel URL:** [https://biosurg-ar.vercel.app](https://biosurg-ar.vercel.app)
-- **Deployment Inspect URL:** [https://vercel.com/fokruls-projects/biosurg-ar](https://vercel.com/fokruls-projects/biosurg-ar)
-- **GitHub Pages Mirror:** [https://fokrulanthro16-eng.github.io/biosurg-ar/](https://fokrulanthro16-eng.github.io/biosurg-ar/)
-- **Public GitHub Repository:** [https://github.com/fokrulanthro16-eng/biosurg-ar](https://github.com/fokrulanthro16-eng/biosurg-ar)
+### 🌐 Live Artifacts & Quick Links
+
+| Resource | Direct Link |
+| :--- | :--- |
+| 🚀 **Live Production Simulator (Vercel)** | [Launch BioSurg AR Simulator](https://biosurg-ar.vercel.app) |
+| 🌐 **Alternative Live Mirror (GitHub Pages)** | [Launch GitHub Pages Mirror](https://fokrulanthro16-eng.github.io/biosurg-ar/) |
+| 🎥 **Full HD Video Demonstration** | [Watch on YouTube](https://youtu.be/zc10LdPOyUo) |
+| 💻 **Source Code Repository** | [GitHub Repo](https://github.com/fokrulanthro16-eng/biosurg-ar) |
+| 🧪 **14/14 LEAF Verification Matrix** | [View LEAF Test Plan](./devpost/leaf-test-plan.md) |
 
 ---
 

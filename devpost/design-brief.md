@@ -1,6 +1,20 @@
 # BioSurg AR v3.0 — Quantum Autonomous Neural Trauma & Sub-Dermal Microsurgical AR Suite for Snap SPECS
 ## Hackathon Submission Design Brief (`challengepost/learn-specs`)
 
+> **Zero-Touch Spatial Ultrasound, Sub-Dermal Vein Projection & Doppler Acoustic Guidance for Sterile Emergency Trauma on Snap SPECS.**
+
+---
+
+### 🌐 Live Artifacts & Quick Links
+
+| Resource | Direct Link |
+| :--- | :--- |
+| 🚀 **Live Production Simulator (Vercel)** | [Launch BioSurg AR Simulator](https://biosurg-ar.vercel.app) |
+| 🌐 **Alternative Live Mirror (GitHub Pages)** | [Launch GitHub Pages Mirror](https://fokrulanthro16-eng.github.io/biosurg-ar/) |
+| 🎥 **Full HD Video Demonstration** | [Watch on YouTube](https://youtu.be/zc10LdPOyUo) |
+| 💻 **Source Code Repository** | [GitHub Repo](https://github.com/fokrulanthro16-eng/biosurg-ar) |
+| 🧪 **14/14 LEAF Verification Matrix** | [View LEAF Test Plan](./leaf-test-plan.md) |
+
 ---
 
 ### 🌟 1. Inspiration
