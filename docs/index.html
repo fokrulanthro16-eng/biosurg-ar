@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioSurg AR v3.0 - Quantum Autonomous Neural Trauma & Sub-Dermal Microsurgical AR Suite for Snap SPECS</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2300ffcc'/><path d='M30 50h40M50 30v40' stroke='%2303070e' stroke-width='14' stroke-linecap='round'/></svg>" />
+  <script type="module" crossorigin src="./assets/index-DpTUHckC.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BUSs4Yqx.css">
+</head>
+<body>
+  <!-- 3D WebGL Canvas for Forearm, Shaders & Cannula -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Snap SPECS Optical Waveguide Visor Vignette -->
+  <div id="specs-visor-overlay">
+    <div class="reticle-corner reticle-tl"></div>
+    <div class="reticle-corner reticle-tr"></div>
+    <div class="reticle-corner reticle-bl"></div>
+    <div class="reticle-corner reticle-br"></div>
+  </div>
+
+  <!-- HUD Interface Layer -->
+  <div id="hud-container">
+    <!-- Top Visor Telemetry Bar -->
+    <header class="top-visor-bar">
+      <div class="brand-section">
+        <div class="brand-logo">BS</div>
+        <div>
+          <div class="brand-title">BIOSURG AR v3.0</div>
+          <div style="font-size: 8px; color: var(--text-secondary); letter-spacing: 0.5px;">SNAP SPECS OPTICAL WAVEGUIDE SUITE</div>
+        </div>
+        <span class="brand-badge">HACKATHON BUILD</span>
+      </div>
+
+      <div class="visor-telemetry-group">
+        <div class="telemetry-item">
+          <span class="telemetry-label">WAVEGUIDE OCCLUSION</span>
+          <span class="telemetry-value accent">5.4% FOV</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">NEURAL TRACKING</span>
+          <span class="telemetry-value accent" id="hud-quantum-lock">99.9% LOCK</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">MOTION-TO-PHOTON</span>
+          <span class="telemetry-value accent" id="hud-latency">12ms</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">RENDER PIPELINE</span>
+          <span class="telemetry-value" id="hud-fps">60 FPS</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">CLAD FSM STATE</span>
+          <div class="fsm-state-badge" id="hud-fsm-state">BOOT_CALIBRATION</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 8px;">
+        <button id="btn-audio-toggle" class="hud-btn" title="Toggle Procedural WebAudio Doppler & Cardiac Monitor">
+          <span id="audio-icon">🔊</span> AUDIO: ON
+        </button>
+      </div>
+    </header>
+
+    <!-- Middle Split Area: Left Diagnostics Matrix & Right Verification Panel -->
+    <div class="hud-middle-area">
+      <!-- Left Diagnostics Matrix -->
+      <aside class="clinical-matrix-panel">
+        <!-- Lead-II ECG Waveform -->
+        <div class="hud-card">
+          <div class="hud-card-header">
+            <span class="hud-card-title">
+              <span style="color: #ff3366;">♥</span> CLINICAL LEAD-II ECG
+            </span>
+            <span class="brand-badge" id="ecg-status-badge">110 BPM TACHYCARDIA</span>
+          </div>
+          <canvas id="canvas-ecg" class="canvas-monitor" width="306" height="120"></canvas>
+        </div>
+
+        <!-- Hypovolemic Shock SpO2 Plethysmograph -->
+        <div class="hud-card">
+          <div class="hud-card-header">
+            <span class="hud-card-title">
+              <span style="color: #00bbff;">≋</span> SpO2 PLETHYSMOGRAPH
+            </span>
+            <span class="brand-badge" id="abp-status-badge">ABP: 82/48 mmHg</span>
+          </div>
+          <canvas id="canvas-pleth" class="canvas-monitor" width="306" height="110"></canvas>
+        </div>
+
+        <!-- Live B-Mode Ultrasound Sector Radar -->
+        <div class="hud-card">
+          <div class="hud-card-header">
+            <span class="hud-card-title">
+              <span style="color: #00ffcc;">◬</span> B-MODE ULTRASOUND SECTOR
+            </span>
+            <span class="brand-badge" id="needle-depth-badge">DEPTH: 0.0mm</span>
+          </div>
+          <canvas id="canvas-ultrasound" class="canvas-monitor ultrasound" width="306" height="180"></canvas>
+        </div>
+      </aside>
+
+      <!-- Right Protocol & 14/14 LEAF Verification Panel -->
+      <aside class="protocol-leaf-panel">
+        <div class="hud-card">
+          <div class="hud-card-header">
+            <span class="hud-card-title">
+              <span style="color: #00ffcc;">✓</span> 14/14 LEAF VERIFICATION MATRIX
+            </span>
+            <button id="btn-run-leaf-tests" class="hud-btn primary" style="font-size: 9px; padding: 3px 8px;">
+              RUN ALL 14
+            </button>
+          </div>
+
+          <div class="leaf-score-bar">
+            <span class="leaf-score-text">COMPLIANCE CRITERIA STATUS</span>
+            <span class="leaf-score-badge" id="leaf-score-badge">14 / 14 PASS (100%)</span>
+          </div>
+
+          <div class="leaf-tests-list" id="leaf-tests-container">
+            <!-- Dynamically populated 14 LEAF test rows -->
+          </div>
+        </div>
+
+        <!-- State Machine & CLAD/MCP Terminal -->
+        <div class="hud-card">
+          <div class="hud-card-header">
+            <span class="hud-card-title">
+              <span style="color: #bb88ff;">⌘</span> CLAD / MCP SPATIAL TERMINAL
+            </span>
+            <span class="brand-badge">EVENT LOG</span>
+          </div>
+          <div class="terminal-window" id="terminal-log">
+            <!-- Dynamically populated sub-millisecond CLAD/MCP events -->
+          </div>
+        </div>
+
+        <!-- Quantum SHA-256 DICOM Surgical Audit Exporter -->
+        <button id="btn-export-dicom" class="hud-btn primary" style="width: 100%; justify-content: center; padding: 10px;">
+          <span>🔒</span> QUANTUM SHA-256 DICOM AUDIT EXPORT
+        </button>
+      </aside>
+    </div>
+
+    <!-- Bottom Quick Controls Bar -->
+    <footer class="bottom-control-bar">
+      <div class="action-buttons-group">
+        <button id="btn-auto-sequence" class="hud-btn primary" title="Run Autonomous Microsurgical Sequence">
+          <span>⚡</span> AUTONOMOUS SEQUENCE
+        </button>
+        <button id="btn-toggle-nir" class="hud-btn" title="Toggle Hyperspectral Near-Infrared Hypoxia Heatmap">
+          <span>🔴</span> NIR HYPOXIA: OFF
+        </button>
+        <button id="btn-toggle-exploded" class="hud-btn" title="Toggle Quad-Layer Dynamic Exploded View (+18mm)">
+          <span>⬒</span> EXPLODED VIEW: OFF
+        </button>
+        <button id="btn-toggle-stabilizer" class="hud-btn" title="Toggle AI Micro-Tremor Kalman Filter">
+          <span>🎯</span> AI STABILIZER: ON
+        </button>
+      </div>
+
+      <!-- Cannula Insertion Depth Control Slider -->
+      <div class="depth-slider-group">
+        <span class="depth-slider-label">CANNULA DEPTH:</span>
+        <input type="range" id="slider-cannula-depth" class="depth-slider" min="0" max="4.5" step="0.05" value="0.0" />
+        <span class="telemetry-value accent" id="slider-depth-val" style="min-width: 44px;">0.00mm</span>
+      </div>
+
+      <!-- Spatial Camera Presets -->
+      <div class="camera-views-group">
+        <span class="depth-slider-label">PRESETS:</span>
+        <button class="cam-btn active" data-cam="SURGEON">SPECS POV</button>
+        <button class="cam-btn" data-cam="NIR">NIR HEATMAP</button>
+        <button class="cam-btn" data-cam="CROSS">CROSS-SECTION</button>
+        <button class="cam-btn" data-cam="OVERVIEW">OVERVIEW</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Quantum-Encrypted DICOM SHA-256 Audit Modal -->
+  <div id="dicom-modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span>🔒</span> QUANTUM-ENCRYPTED SHA-256 DICOM SURGICAL AUDIT
+      </div>
+      <button class="modal-close" id="btn-close-modal">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p style="margin-bottom: 8px;">
+        Cryptographic Proof Certificate generated for autonomous neural microsurgery under Snap SPECS Optical Waveguide telemetry.
+      </p>
+      <div class="telemetry-label">CRYPTOGRAPHIC SHA-256 DIGEST:</div>
+      <div class="hash-box" id="modal-hash-display">Calculating cryptographic hash...</div>
+      <div class="telemetry-label">STRUCTURED DICOM JSON PAYLOAD:</div>
+      <pre class="dicom-json-preview" id="modal-json-display"></pre>
+    </div>
+    <div class="modal-footer">
+      <button class="hud-btn" id="btn-modal-close-footer">CLOSE</button>
+      <button class="hud-btn primary" id="btn-download-dicom">
+        <span>💾</span> DOWNLOAD .DCM.JSON AUDIT FILE
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>
