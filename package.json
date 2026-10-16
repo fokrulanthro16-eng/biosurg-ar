@@ -1,0 +1,37 @@
+{
+  "name": "biosurg-ar",
+  "version": "3.0.0",
+  "description": "BioSurg AR v3.0 - Quantum Autonomous Neural Trauma & Sub-Dermal Microsurgical AR Suite for Snap SPECS",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "tsx tests/run_leaf_tests.ts",
+    "capture": "tsx scripts/capture_screenshots.ts",
+    "video": "tsx scripts/generate_demo_video.ts"
+  },
+  "keywords": [
+    "snap-specs",
+    "augmented-reality",
+    "threejs",
+    "webgl2",
+    "microsurgery",
+    "shaders",
+    "webaudio",
+    "hackathon",
+    "learn-specs"
+  ],
+  "author": "BioSurg AR Team",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.183.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.183.0",
+    "puppeteer-core": "^24.40.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.3"
+  }
+}

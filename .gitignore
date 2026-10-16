@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Temp files
+temp_video/
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
